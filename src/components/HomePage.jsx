@@ -1,7 +1,6 @@
 import React from "react";
 import "./HomeStyle.css";
 
-
 const HomePage = () => {
   return (
     <>
@@ -9,7 +8,7 @@ const HomePage = () => {
     <nav class="nav">
       <div class="nav__wrapper">
         <figure class="nav__img--mask">
-          <img class="nav__img" src="" alt="logo" />
+          <img class="logo" src="assets/logo.png" alt="logo" />
         </figure>
         <ul class="nav__list--wrapper">
           <li class="nav__list nav__list--login">Login</li>
@@ -38,7 +37,7 @@ const HomePage = () => {
               <button class="btn home__cta--btn">Login</button>
             </div>
             <figure class="landing__image--mask">
-              <img src="" alt="landing" />
+              <img src="assets/landing.png" alt="landing" />
             </figure>
           </div>
         </div>
@@ -51,7 +50,7 @@ const HomePage = () => {
           <div class="features__wrapper">
             <div class="features">
               <div class="features__icon">
-                <AiFillFileText />
+                {/* <AiFillFileText /> */}
               </div>
               <div class="features__title">Read or listen</div>
               <div class="features__sub--title">
@@ -60,7 +59,7 @@ const HomePage = () => {
             </div>
             <div class="features">
               <div class="features__icon">
-                <AiFillBulb />
+                {/* <AiFillBulb /> */}
               </div>
               <div class="features__title">Find your next read</div>
               <div class="features__sub--title">
@@ -69,7 +68,7 @@ const HomePage = () => {
             </div>
             <div class="features">
               <div class="features__icon">
-                <AiFillAudio />
+                {/* <AiFillAudio /> */}
               </div>
               <div class="features__title">Briefcasts</div>
               <div class="features__sub--title">
@@ -160,7 +159,7 @@ const HomePage = () => {
               <div class="review__header">
                 <div class="review__name">Hanna M.</div>
                 <div class="review__stars">
-                  <BsStarFill />
+                  {/* <BsStarFill /> */}
                 </div>
               </div>
               <div class="review__body">
@@ -173,7 +172,7 @@ const HomePage = () => {
               <div class="review__header">
                 <div class="review__name">David B.</div>
                 <div class="review__stars">
-                  <BsStarFill />
+                  {/* <BsStarFill /> */}
                 </div>
               </div>
               <div class="review__body">
@@ -186,7 +185,7 @@ const HomePage = () => {
               <div class="review__header">
                 <div class="review__name">Nathan S.</div>
                 <div class="review__stars">
-                  <BsStarFill />
+                  {/* <BsStarFill /> */}
                 </div>
               </div>
               <div class="review__body">
@@ -200,7 +199,7 @@ const HomePage = () => {
               <div class="review__header">
                 <div class="review__name">Ryan R.</div>
                 <div class="review__stars">
-                  <BsStarFill />
+                  {/* <BsStarFill /> */}  
                 </div>
               </div>
               <div class="review__body">
@@ -224,15 +223,15 @@ const HomePage = () => {
           <div class="numbers__wrapper">
             <div class="numbers">
               <div class="numbers__icon">
-                <BiCrown />
+                {/* <BiCrown /> */}
               </div>
               <div class="numbers__title">3 Million</div>
               <div class="numbers__sub--title">Downloads on all platforms</div>
             </div>
             <div class="numbers">
               <div class="numbers__icon numbers__star--icon">
-                <BsStarFill />
-                <BsStarHalf />
+                {/* <BsStarFill /> */}
+                {/* <BsStarHalf /> */}
               </div>
               <div class="numbers__title">4.5 Stars</div>
               <div class="numbers__sub--title">
@@ -241,7 +240,7 @@ const HomePage = () => {
             </div>
             <div class="numbers">
               <div class="numbers__icon">
-                <RiLeafLine />
+                {/* <RiLeafLine /> */}
               </div>
               <div class="numbers__title">97%</div>
               <div class="numbers__sub--title">
