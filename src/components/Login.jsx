@@ -45,4 +45,3 @@ const Login = () => {
   } else {
     setError("Password is incorrect, try again");
   }
-} 
