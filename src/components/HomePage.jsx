@@ -4,7 +4,7 @@ import "./HomeStyle.css";
 const HomePage = () => {
   return (
     <>
-  <body>
+
     <nav class="nav">
       <div class="nav__wrapper">
         <figure class="nav__img--mask">
@@ -332,7 +332,7 @@ const HomePage = () => {
         </div>
       </div>
     </section>
-  </body>
+ 
 </>
   );
 };

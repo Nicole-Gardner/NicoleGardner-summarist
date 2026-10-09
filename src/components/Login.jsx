@@ -32,12 +32,7 @@ const Login = () => {
 };
 
 
-const users = [
-  { email: "user1@example.com", password: "password1" },
-  { email: "user2@example.com", password: "password2" },
-];
 
-function login(email, password) {
   const user = users.find((user) => user.email === email);
   if (!user) {
     setError("Email not found");
