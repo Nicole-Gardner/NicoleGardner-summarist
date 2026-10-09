@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./HomeStyle.css";
 import Login from "./Login.jsx";
 
 
 const HomePage = () => {
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+
   return (
     <>
 
@@ -13,7 +15,9 @@ const HomePage = () => {
           <img className="logo" src="assets/logo.png" alt="logo" />
         </figure>
         <ul className="nav__list--wrapper">
-          <li className="nav__list nav__list--login">Login</li>
+          <li className="nav__list nav__list--login" onClick={() => setIsLoginOpen(true)}>
+            Login
+          </li>
           <li className="nav__list nav__list--mobile">About</li>
           <li className="nav__list nav__list--mobile">Contact</li>
           <li className="nav__list nav__list--mobile">Help</li>
@@ -334,9 +338,23 @@ const HomePage = () => {
         </div>
       </div>
     </section>
-    <Login />
- 
-</>
+
+    <button
+      className="btn home__cta--btn"
+      onClick={() => setIsLoginOpen(true)}
+    >
+      Login
+    </button>
+
+    {isLoginOpen && (
+      <div className="auth__overlay">
+        <div className="auth__modal">
+          <button onClick={() => setIsLoginOpen(false)}>×</button>
+          <Login />
+        </div>
+      </div>
+    )}
+  </>
 
   );
 };
