@@ -346,14 +346,6 @@ const HomePage = () => {
       Login
     </button>
 
-    {isLoginOpen && (
-      <div className="auth__overlay">
-        <div className="auth__modal">
-          <button onClick={() => setIsLoginOpen(false)}>×</button>
-          <Login />
-        </div>
-      </div>
-    )}
   </>
 
   );
