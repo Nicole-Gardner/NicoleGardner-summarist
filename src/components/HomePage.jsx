@@ -3,7 +3,7 @@ import "./HomeStyle.css";
 import Login from "./Login.jsx";
 
 const HomePage = () => {
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
@@ -15,7 +15,7 @@ const HomePage = () => {
           <ul className="nav__list--wrapper">
             <li
               className="nav__list nav__list--login"
-              onClick={() => setIsLoginOpen(true)}
+              onClick={() => setIsModalOpen(true)}
             >
               Login
             </li>
@@ -41,7 +41,12 @@ const HomePage = () => {
                   <br className="remove--tablet" />
                   and even people who don’t like to read.
                 </div>
-                <button className="btn home__cta--btn">Login</button>
+                <button
+                  className="btn home__cta--btn"
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  Login
+                </button>
               </div>
               <figure className="landing__image--mask">
                 <img src="assets/landing.png" alt="landing" />
@@ -214,7 +219,7 @@ const HomePage = () => {
               </div>
             </div>
             <div className="reviews__btn--wrapper">
-              <button className="btn home__cta--btn">Login</button>
+              <button className="btn home__cta--btn" onClick={() => setIsModalOpen(true)}>Login</button>
             </div>
           </div>
         </div>
@@ -335,14 +340,14 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      {isLoginOpen && (
-  <div className="auth__overlay">
-    <div className="auth__modal">
-      <button onClick={() => setIsLoginOpen(false)}>×</button>
-      <Login />
-    </div>
-  </div>
-)}
+      {isModalOpen && (
+        <div className="auth__overlay">
+          <div className="auth__modal">
+            <button onClick={() => setIsModalOpen(false)}>×</button>
+            <Login />
+          </div>
+        </div>
+      )}
     </>
   );
 };
