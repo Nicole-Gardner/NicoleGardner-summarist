@@ -16,6 +16,17 @@ const Login = () => {
       setError(error.message);
     }
   };
+  
+  const handleGuestLogin = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, "guest@gmail.com", "guest234");
+      console.log("User logged in successfully");
+      setError("");
+      navigate("/for-you"); 
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
   return (
     <div>
@@ -36,7 +47,7 @@ const Login = () => {
       />
 
       <button onClick={handleLogin}>Login</button>
-
+      <button onClick={handleGuestLogin}>Login as Guest</button>
       {error && <p>{error}</p>}
     </div>
   );

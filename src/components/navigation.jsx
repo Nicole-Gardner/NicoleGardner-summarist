@@ -5,18 +5,9 @@ const Navigation = () => {
   return (
     <nav>
       <ul>
-       <li
-  className="nav__list nav__list--login"
-  onClick={() => setIsLoginOpen(true)}
->
-  Login
-</li>
-<button
-  className="btn home__cta--btn"
-  onClick={() => setIsLoginOpen(true)}
->
-  Login
-</button>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/about">About</Link></li>
+        <li><Link to="/contact">Contact</Link></li>
       </ul>
     </nav>
   );
