@@ -1,14 +1,19 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 import HomePage from "./components/HomePage";
 import ForYou from "./components/ForYou";
+import BookSummary from "./components/BookSummary";
+
+
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/for-you" element={<ForYou />} />
-      </Routes>
+  <Route path="/" element={<HomePage />} />
+  <Route path="/book-summary" element={<BookSummary />} />
+</Routes>
+
+        
     </BrowserRouter>
   );
 }
