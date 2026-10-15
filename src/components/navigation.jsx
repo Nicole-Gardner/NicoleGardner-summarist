@@ -1,5 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from "react-router";
+ import SuggestedBooks from './SuggestedBooks';
+  import SelectedBooks from './SelectedBooks';
+  import RecommendedBooks from './RecommendedBooks';
 
 const Navigation = () => {
   return (
