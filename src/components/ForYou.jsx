@@ -1,6 +1,6 @@
-  import SuggestedBooks from './SuggestedBooks';
-  import SelectedBooks from './SelectedBooks';
-  import RecommendedBooks from './RecommendedBooks';
+  import SuggestedBooks from './SuggestedBooks.jsx';
+  import SelectedBooks from './SelectedBooks.jsx';
+  import RecommendedBooks from './RecommendedBooks.jsx';
 
 function ForYou() {
   return (
