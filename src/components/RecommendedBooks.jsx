@@ -18,14 +18,21 @@ const RecommendedBooks = () => {
 
         fetchData();
     }, []);
-
-    return (
-        <div>
-            {books.map((item) => (
-                <img key={item.id} src={item.imageLink} alt={item.title} />
-            ))}
-        </div>
-    );
-};
+return (
+  <div>
+    {books.map((item) => (
+      <Link
+        key={item.id}
+        to={`/book-summary/${item.id}`}
+      >
+        <img
+          src={item.imageLink}
+          alt={item.title}
+        />
+      </Link>
+    ))}
+  </div>
+);
+ };
 
 export default RecommendedBooks;

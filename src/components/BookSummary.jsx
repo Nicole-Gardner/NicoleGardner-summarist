@@ -2,33 +2,42 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import AudioPlayer from "./AudioPlayer";
 
-function BookSummary() {
-  const { id } = useParams();
+const BookSummary = () => {
+  const { id: bookId } = useParams();
   const [book, setBook] = useState(null);
 
   useEffect(() => {
-    const fetchBook = async () => {
-      const response = await fetch(
-        `https://us-central1-summaristt.cloudfunctions.net/getBook?id=${id}`
-      );
-      const data = await response.json();
-      setBook(data);
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `https://us-central1-summaristt.cloudfunctions.net/getBook?id=${bookId}`
+        );
+
+        const jsonData = await response.json();
+        console.log(jsonData);
+        setBook(jsonData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     };
-    fetchBook();
-  }, [id]);
 
-  if (!book) return <div>Loading...</div>;
+    fetchData();
+  }, [bookId]);
 
-  return (
-    <section className="book-summary">
-      <img src={book.imageLink} alt={book.title} className="book-summary__image" />
-      <h1>{book.title}</h1>
-      <h3>By {book.author}</h3>
-      <p>{book.summary}</p>
-      <h2>Listen to the Summary</h2>
-      <AudioPlayer />
-    </section>
-  );
-}
+  if (!book) return <p>Loading book...</p>;
+
+return (
+  <div>
+    <h1>{book.title}</h1>
+    <p>{book.author}</p>
+    <img src={book.imageLink} alt={book.title} />
+
+    <h2>Book Summary</h2>
+    <p>{book.summary}</p>
+    <AudioPlayer audioLink={book.audioLink} />
+  </div>
+);
+
+};
 
 export default BookSummary;
