@@ -1,0 +1,29 @@
+
+.faq__item {
+  border-bottom: 1px solid #ddd;
+  padding: 24px 0;
+  text-align: left;
+}
+
+.faq__question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq__question span {
+  margin-left: 16px;
+}
+
+.faq__item p {
+  margin-top: 20px;
+  line-height: 1.6;
+}
