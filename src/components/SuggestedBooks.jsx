@@ -1,37 +1,50 @@
 import { Link } from "react-router";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
+import SkeletonState from "./SkeletonState";
+
 const SuggestedBooks = () => {
-    const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch(
-                    "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=suggested"
-                );
-                const jsonData = await response.json();
-                console.log(jsonData); // Log the response to see its structure
-                setBooks(jsonData);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=suggested"
+        );
 
-        fetchData();
-    }, []);
+        if (!response.ok) {
+          throw new Error("Failed to fetch books");
+        }
 
-   return (
-  <div>
-    {books.map((item) => (
-      <Link
-        key={item.id}
-        to={`/book-summary/${item.id}`}
-      >
-        <img src={item.imageLink} alt={item.title} />
-      </Link>
-    ))}
-  </div>
-);
+        const jsonData = await response.json();
+        setBooks(jsonData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      {loading ? (
+        <SkeletonState />
+      ) : (
+        books.map((item) => (
+          <Link
+            key={item.id}
+            to={`/book-summary/${item.id}`}
+          >
+            <img src={item.imageLink} alt={item.title} />
+          </Link>
+        ))
+      )}
+    </div>
+  );
 };
 
 export default SuggestedBooks;
