@@ -2,22 +2,27 @@ import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./firebase";
 import { useNavigate } from "react-router";
+import GoogleLogin from "./GoogleLogin";
+import ForgotPassword from "./ForgotPassword";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
 
   const handleLogin = async () => {
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      console.log("User logged in successfully");
-      setError("");
-    } catch (error) {
-      setError(error.message);
-    }
-  };
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    console.log("User logged in successfully");
+    setError("");
+    navigate("/for-you");
+  } catch (error) {
+    setError(error.message);
+  
+  }
+};
   
   const handleGuestLogin = async () => {
     try {
@@ -50,6 +55,12 @@ const Login = () => {
 
       <button onClick={handleLogin}>Login</button>
       <button onClick={handleGuestLogin}>Login as Guest</button>
+      <GoogleLogin />
+      <button onClick={() => setShowForgotPassword(true)}>
+  Forgot Password?
+</button>
+
+{showForgotPassword && <ForgotPassword />}
       {error && <p>{error}</p>}
     </div>
   );

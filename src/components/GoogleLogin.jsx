@@ -1,10 +1,13 @@
 
 import React from 'react';
+import { useNavigate } from "react-router";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import app from './firebase'; // Ensure you have initialized Firebase in this file
 
 const GoogleLogin = () => {
+    const navigate = useNavigate();
   const handleGoogleLogin = async () => {
+  
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
     
@@ -13,6 +16,7 @@ const GoogleLogin = () => {
       // User is signed in
       const user = result.user;
       console.log('User Info:', user);
+      navigate("/for-you");
     } catch (error) {
       console.error('Error during Google login:', error);
     }
