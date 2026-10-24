@@ -4,6 +4,9 @@ const LibraryPage = () => {
   const [savedBooks] = useState(() =>
     JSON.parse(localStorage.getItem("savedBooks") || "[]")
   );
+  const [finishedBooks] = useState(() =>
+    JSON.parse(localStorage.getItem("finishedBooks") || "[]")
+  );
 
   return (
     <div>
@@ -26,7 +29,16 @@ const LibraryPage = () => {
       )}
 
       <h2>Finished Books</h2>
-      <p>No finished books yet.</p>
+      {finishedBooks.length > 0 ? (
+        finishedBooks.map((book) => (
+          <div key={book.id}>
+            <h3>{book.title}</h3>
+            <img src={book.imageLink} alt={book.title} width="150" />
+          </div>
+        ))
+      ) : (
+        <p>No finished books yet.</p>
+      )}
     </div>
   );
 };
