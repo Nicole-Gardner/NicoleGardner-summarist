@@ -6,30 +6,34 @@ function SearchBar() {
   const [searchTerm, setSearchTerm] = useState("");
   const [books, setBooks] = useState([]);
 
-  useEffect(() => {
-    const fetchBooks = async () => {
-      try {
-        const response = await fetch(
-          "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=suggested"
-        );
+ useEffect(() => {
+  const fetchBooks = async () => {
+    if (!searchTerm.trim()) {
+      setBooks([]);
+      return;
+    }
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch books");
-        }
+    try {
+      const response = await fetch(
+        `https://us-central1-summaristt.cloudfunctions.net/getBooksByAuthorOrTitle?search=${encodeURIComponent(searchTerm)}`
+      );
 
-        const data = await response.json();
-        setBooks(data);
-      } catch (error) {
-        console.error("Error fetching books:", error);
+      if (!response.ok) {
+        throw new Error("Failed to search books");
       }
-    };
 
-    fetchBooks();
-  }, []);
+      const data = await response.json();
+      setBooks(data);
+    } catch (error) {
+      console.error("Error searching books:", error);
+    }
+  };
 
-  const filteredBooks = books.filter((book) =>
-    book.title?.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  fetchBooks();
+}, [searchTerm]);
+
+const filteredBooks = books;
+ 
 
   return (
     <div className="search">

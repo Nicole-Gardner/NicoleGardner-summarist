@@ -9,6 +9,7 @@ import SalesPage from "./components/SalesPage";
 import SubscriptionPlans from "./components/SubscriptionsPlans";
 import Success from "./components/Success";
 import Cancel from "./components/Cancel";
+import LibraryPage from "./components/LibraryPage";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
 <Route path="/subscriptions-plans" element={<SubscriptionPlans />} />
 <Route path="/success" element={<Success />} />
 <Route path="/cancel" element={<Cancel />} />
+<Route path="/library-page" element={<LibraryPage />} />
 </Routes>
 
         

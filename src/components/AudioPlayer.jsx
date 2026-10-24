@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { FaPlay, FaPause } from "react-icons/fa";
 
-function AudioPlayer({ audioLink }) {
+function AudioPlayer({ audioLink, onFinish }) {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -22,7 +22,10 @@ function AudioPlayer({ audioLink }) {
         src={audioLink}
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
-        onEnded={() => setIsPlaying(false)}
+        onEnded={() => {
+  setIsPlaying(false);
+  onFinish?.();
+}}
       />
 
       <button
