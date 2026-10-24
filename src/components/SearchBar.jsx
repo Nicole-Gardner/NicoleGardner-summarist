@@ -5,6 +5,10 @@ import "./SearchBar.css";
 function SearchBar() {
   const [searchTerm, setSearchTerm] = useState("");
   const [books, setBooks] = useState([]);
+  const path = window.location.pathname;
+
+  console.log(path);
+
 
  useEffect(() => {
   const fetchBooks = async () => {
@@ -33,7 +37,8 @@ function SearchBar() {
 }, [searchTerm]);
 
 const filteredBooks = books;
- 
+  if(path === "/" || path === "/choose-plan") return null
+
 
   return (
     <div className="search">
