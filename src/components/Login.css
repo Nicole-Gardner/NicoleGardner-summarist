@@ -1,0 +1,108 @@
+.login-container {
+    width: 300px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+.login-container button {
+    margin-bottom: 10px;
+}
+.h2 {
+    text-align: center;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn--login {
+    background-color:#2bd97c;
+
+}
+.btn--login:hover {
+    background-color: #218838;
+}
+
+
+
+
+
+.btn--forgot,
+.btn--account {
+    background: none;
+    color: #116be9;
+    width: auto;
+    padding: 0;
+}
+
+.btn--forgot:hover,
+.btn--account:hover {
+    background: none;
+    color: #4285f4;
+}
+
+
+.btn--guest {
+    background-color: #3a579d;
+
+}
+.btn--guest:hover {
+    background-color: #2a478d;
+}
+
+
+.google__icon--wrapper {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    bottom: 2px;
+    width: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 4px;
+    margin: 0;
+
+}
+.btn--google {
+    position: relative;
+}
+
+.google__icon {
+    width: 24px;
+    height: 24px;
+}
+.btn--google {
+    background-color: #4285f4;
+   
+}
+.btn--google:hover {
+    background-color: #041839;
+}

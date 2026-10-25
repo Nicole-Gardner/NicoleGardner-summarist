@@ -23,13 +23,13 @@ const GoogleLogin = () => {
   };
 
   return (
-    <div>
-      <h2>Login with Google</h2>
-      <span>Sign in with your Google account to access the application.</span>
-      <img src="assets/google.png" alt="Google Logo" />
-      <button className="google_button" onClick={handleGoogleLogin}>
-        Sign in with Google
-      </button>
+    <div className="google-login"> 
+     <button className="btn btn--google" onClick={handleGoogleLogin}>
+  <figure className="google__icon--wrapper">
+    <img src="assets/google.png" alt="Google" className="google__icon" />
+  </figure>
+  Login with Google
+</button>
     </div>
   );
 };
