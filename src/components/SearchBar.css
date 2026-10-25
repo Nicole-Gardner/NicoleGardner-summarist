@@ -4,6 +4,7 @@
   width: 100%;
   max-width: 500px;
   margin: 24px auto;
+  margin-right: 0;
 }
 
 .search input {
@@ -14,7 +15,9 @@
   font-size: 16px;
   outline: none;
   background-color: #fff;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
 .search input:focus {

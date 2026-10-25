@@ -1,9 +1,16 @@
 import { useRef, useState } from "react";
-import { FaPlay, FaPause } from "react-icons/fa";
+import {
+  FaPlay,
+  FaPause,
+  FaStepBackward,
+  FaStepForward
+} from "react-icons/fa";
 
 function AudioPlayer({ audioLink, onFinish }) {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
 
   const togglePlay = () => {
     const audio = audioRef.current;
@@ -12,6 +19,30 @@ function AudioPlayer({ audioLink, onFinish }) {
       audio.play().catch(console.error);
     } else {
       audio.pause();
+    }
+  };
+  const handleLoadedMetadata = () => {
+    if (audioRef.current) {
+      setDuration(audioRef.current.duration);
+    }
+  };
+
+  const formatDuration = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
+  };
+  const goBack = () => {
+    // Go back 10 seconds
+    if (audioRef.current) {
+      audioRef.current.currentTime = Math.max(0, audioRef.current.currentTime - 10);
+    }
+  };
+
+  const goForward = () => {
+    // Go forward 10 seconds
+    if (audioRef.current) {
+      audioRef.current.currentTime = Math.min(duration, audioRef.current.currentTime + 10);
     }
   };
 
@@ -23,9 +54,11 @@ function AudioPlayer({ audioLink, onFinish }) {
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
         onEnded={() => {
-  setIsPlaying(false);
-  onFinish?.();
-}}
+          setIsPlaying(false);
+          onFinish?.();
+        }}
+        onLoadedMetadata={handleLoadedMetadata}
+        onTimeUpdate={() => setCurrentTime(audioRef.current?.currentTime ?? 0)}
       />
 
       <button
@@ -35,6 +68,22 @@ function AudioPlayer({ audioLink, onFinish }) {
       >
         {isPlaying ? <FaPause /> : <FaPlay />}
       </button>
+      <button
+        type="button"
+        onClick={goBack}
+        disabled={!audioLink}
+      >
+        <FaStepBackward />
+      </button>
+      <button
+        type="button"
+        onClick={goForward}
+        disabled={!audioLink}
+      >
+        <FaStepForward />
+      </button>
+      <p>Duration: {duration ? formatDuration(duration) : "Loading..."}</p>
+      <p>Current Time: {formatDuration(currentTime)}</p>
     </div>
   );
 }

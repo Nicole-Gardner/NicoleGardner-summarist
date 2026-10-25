@@ -86,7 +86,7 @@ const HomePage = () => {
             </div>
             <div className="statistics__wrapper">
               <div className="statistics__content--header">
-                <div className="statistics__heading">
+                <div className="statistics__heading--active">
                   Enhance your knowledge
                 </div>
                 <div className="statistics__heading">
