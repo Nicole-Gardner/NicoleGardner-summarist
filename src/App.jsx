@@ -20,7 +20,10 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/book-summary/:id" element={<BookSummary />} />
-        <Route path="/for-you" element={<ForYou />} />
+        <Route element={<LibraryLayout />}>
+  <Route path="/for-you" element={<ForYou />} />
+  <Route path="/library-page" element={<LibraryPage />} />
+</Route>
         <Route path="/suggested-books" element={<SuggestedBooks />} />
         <Route path="/selected-books" element={<SelectedBooks />} />
         <Route path="/recommended-books" element={<RecommendedBooks />} />
@@ -28,7 +31,7 @@ function App() {
         <Route path="/subscription-plans"element={<SubscriptionPlans />}/>
         <Route path="/success" element={<Success />} />
         <Route path="/cancel" element={<Cancel />} />
-        <Route path="/library-page" element={<LibraryPage />} />
+    
         <Route path="/sidebar" element={<Sidebar />} />
       </Routes>
     </BrowserRouter>

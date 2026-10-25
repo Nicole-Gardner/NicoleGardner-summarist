@@ -134,6 +134,11 @@ code {
 
 .plan h2 {
   margin-bottom: 20px;
+  color: #032b41;
+}
+
+.plan p {
+  color: #394547;
 }
 
 .plan button {

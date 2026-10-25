@@ -52,31 +52,7 @@ const handlePlanClick = async (plan) => {
       </button>
     </div>
   </div>
-);return (
-  <div className="subscription__plans">
-    <div className="plan plan--yearly">
-      <h2>Premium Plus Yearly</h2>
-      <p>$99.99/year</p>
-      <p>7-day free trial</p>
-
-      <button onClick={() => handlePlanClick("yearly")}>
-        Start Your Free 7-Day Trial
-      </button>
-
-      <p>Cancel before your trial ends to avoid being charged.</p>
-    </div>
-
-    <div className="plan plan--monthly">
-      <h2>Premium Monthly</h2>
-      <p>$9.99/month</p>
-      <p>No trial included</p>
-
-      <button onClick={() => handlePlanClick("monthly")}>
-        Get Started
-      </button>
-    </div>
-  </div>
-);
+)
 };
 
 export default SubscriptionPlans;
