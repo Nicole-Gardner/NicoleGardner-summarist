@@ -1,9 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./HomeStyle.css";
 import Login from "./Login.jsx";
 
 const HomePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeHeading, setActiveHeading] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveHeading((prev) => (prev + 1) % 6);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
@@ -86,18 +95,38 @@ const HomePage = () => {
             </div>
             <div className="statistics__wrapper">
               <div className="statistics__content--header">
-                <div className="statistics__heading--active">
+                <div
+                  className={`statistics__heading ${
+                    activeHeading === 0 ? "statistics__heading--active" : ""
+                  }`}
+                >
                   Enhance your knowledge
                 </div>
-                <div className="statistics__heading">
+                <div
+                  className={`statistics__heading ${
+                    activeHeading === 1 ? "statistics__heading--active" : ""
+                  }`}
+                >
                   Achieve greater success
                 </div>
-                <div className="statistics__heading">Improve your health</div>
-                <div className="statistics__heading">
+                <div className={`statistics__heading ${
+                  activeHeading === 2 ? "statistics__heading--active" : ""
+                }`}>
+                  Improve your health
+                </div>
+                <div className={`statistics__heading ${
+                  activeHeading === 3 ? "statistics__heading--active" : ""
+                }`}>
                   Develop better parenting skills
                 </div>
-                <div className="statistics__heading">Increase happiness</div>
-                <div className="statistics__heading">
+                <div className={`statistics__heading ${
+                  activeHeading === 4 ? "statistics__heading--active" : ""
+                }`}>
+                  Increase happiness
+                </div>
+                <div className={`statistics__heading ${
+                  activeHeading === 5 ? "statistics__heading--active" : ""
+                }`}>
                   Be the best version of yourself!
                 </div>
               </div>

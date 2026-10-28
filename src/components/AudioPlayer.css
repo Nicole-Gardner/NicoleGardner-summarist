@@ -1,0 +1,9 @@
+.audio__player--wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.audio__book img {
+  width: 80px;
+}

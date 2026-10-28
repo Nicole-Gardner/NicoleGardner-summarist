@@ -1,12 +1,12 @@
 import { useRef, useState } from "react";
+import "./AudioPlayer.css";
 import {
   FaPlay,
   FaPause,
   FaStepBackward,
   FaStepForward
 } from "react-icons/fa";
-
-function AudioPlayer({ audioLink, onFinish }) {
+function AudioPlayer({ audioLink, imageLink, author, onFinish }) {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
@@ -45,9 +45,13 @@ function AudioPlayer({ audioLink, onFinish }) {
       audioRef.current.currentTime = Math.min(duration, audioRef.current.currentTime + 10);
     }
   };
+return (
+  <div className="audio__player--wrapper">
+    <div className="audio__book">
+      <img src={imageLink} alt="Book cover" />
+      <p>{author}</p>
+    </div>
 
-  return (
-    <div>
       <audio
         ref={audioRef}
         src={audioLink}
