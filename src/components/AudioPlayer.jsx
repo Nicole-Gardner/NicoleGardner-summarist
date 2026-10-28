@@ -45,51 +45,39 @@ function AudioPlayer({ audioLink, imageLink, author, onFinish }) {
       audioRef.current.currentTime = Math.min(duration, audioRef.current.currentTime + 10);
     }
   };
-return (
-  <div className="audio__player--wrapper">
+  return (
+    <div className="audio__player">
     <div className="audio__book">
       <img src={imageLink} alt="Book cover" />
       <p>{author}</p>
     </div>
+    <audio
+      ref={audioRef}
+      src={audioLink}
+      onPlay={() => setIsPlaying(true)}
+      onPause={() => setIsPlaying(false)}
+      onEnded={() => {
+      setIsPlaying(false);
+      onFinish?.();
+      }}
+      onLoadedMetadata={handleLoadedMetadata}
+      onTimeUpdate={() => setCurrentTime(audioRef.current?.currentTime ?? 0)}
+    />
 
-      <audio
-        ref={audioRef}
-        src={audioLink}
-        onPlay={() => setIsPlaying(true)}
-        onPause={() => setIsPlaying(false)}
-        onEnded={() => {
-          setIsPlaying(false);
-          onFinish?.();
-        }}
-        onLoadedMetadata={handleLoadedMetadata}
-        onTimeUpdate={() => setCurrentTime(audioRef.current?.currentTime ?? 0)}
-      />
-
-      <button
-        type="button"
-        onClick={togglePlay}
-        disabled={!audioLink}
-      >
+      <button type="button" onClick={togglePlay} disabled={!audioLink}>
         {isPlaying ? <FaPause /> : <FaPlay />}
       </button>
-      <button
-        type="button"
-        onClick={goBack}
-        disabled={!audioLink}
-      >
+      <button type="button" onClick={goBack} disabled={!audioLink}>
         <FaStepBackward />
       </button>
-      <button
-        type="button"
-        onClick={goForward}
-        disabled={!audioLink}
-      >
+      <button type="button" onClick={goForward} disabled={!audioLink}>
         <FaStepForward />
       </button>
       <p>Duration: {duration ? formatDuration(duration) : "Loading..."}</p>
       <p>Current Time: {formatDuration(currentTime)}</p>
     </div>
-  );
+    );
+
 }
 
 export default AudioPlayer;

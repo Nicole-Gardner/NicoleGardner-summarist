@@ -66,8 +66,10 @@ return (
 
     <h2>Book Summary</h2>
     <p>{book.summary}</p>
-    <AudioPlayer
+<AudioPlayer
   audioLink={book.audioLink}
+  imageLink={book.imageLink}
+  author={book.author}
   onFinish={handleFinishBook}
 />
   </div>
