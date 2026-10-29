@@ -46,7 +46,7 @@ function AudioPlayer({ audioLink, imageLink, author, onFinish }) {
     }
   };
   return (
-    <div className="audio__player">
+    <div className="audio__player--wrapper">
     <div className="audio__book">
       <img src={imageLink} alt="Book cover" />
       <p>{author}</p>
