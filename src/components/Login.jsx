@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import GoogleLogin from "./GoogleLogin";
 import ForgotPassword from "./ForgotPassword";
 import "./Login.css";
+import Signup from "./SignUp";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -12,6 +13,7 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const [showForgotPassword, setShowForgotPassword] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
 
   const handleLogin = async () => {
   try {
@@ -62,9 +64,22 @@ const Login = () => {
       <button className="btn btn--forgot" onClick={() => setShowForgotPassword(true)}>
         Forgot Password?
       </button>
-      <button className="btn btn--account" onClick={() => navigate("/signup")}>
-        Don't have an account?
+     <button
+  className="btn btn--account"
+  onClick={() => setShowSignup(true)}
+>
+  Don't have an account? Sign Up
+</button>
+      {showSignup && (
+  <div className="modal-overlay">
+    <div className="modal-content">
+      <button onClick={() => setShowSignup(false)}>
+        ✕
       </button>
+      <Signup />
+    </div>
+  </div>
+)}
 
 {showForgotPassword && <ForgotPassword />}
       {error && <p>{error}</p>}

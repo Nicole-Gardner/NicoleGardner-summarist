@@ -12,6 +12,7 @@ import Cancel from "./components/Cancel";
 import LibraryPage from "./components/LibraryPage";
 import SearchBar from "./components/SearchBar";
 import Sidebar from "./components/SideBar";
+import SignUp from "./components/SignUp";
 import LibraryLayout from "./components/LibraryLayout";
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/subscription-plans"element={<SubscriptionPlans />}/>
         <Route path="/success" element={<Success />} />
         <Route path="/cancel" element={<Cancel />} />
+        
     
         <Route path="/sidebar" element={<Sidebar />} />
       </Routes>

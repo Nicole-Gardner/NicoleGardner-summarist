@@ -1,20 +1,27 @@
 import React, { useState } from 'react';
-import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
-import app from './firebase'; // Ensure you have initialized Firebase in this file
+import { sendPasswordResetEmail } from 'firebase/auth';
+import { auth } from './firebase';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
   const handleResetPassword = async () => {
-    const auth = getAuth(app);
-    try {
-      await sendPasswordResetEmail(auth, email);
-      setMessage('Password reset email sent!');
-    } catch (error) {
-      setMessage(`Error: ${error.message}`);
-    }
-  };
+  if (!email.trim()) {
+    setMessage("Please enter your email address.");
+    return;
+  }
+
+  try {
+    await sendPasswordResetEmail(auth, email.trim());
+    setMessage(
+      "If an account exists with this email, you'll receive a password reset link."
+    );
+  } catch (error) {
+    console.error("Password reset error:", error);
+    setMessage("Unable to send reset email. Please try again.");
+  }
+};
 
   return (
     <div>

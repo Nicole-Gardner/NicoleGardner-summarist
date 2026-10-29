@@ -75,6 +75,20 @@ function AudioPlayer({ audioLink, imageLink, author, onFinish }) {
       </button>
       <p>Duration: {duration ? formatDuration(duration) : "Loading..."}</p>
       <p>Current Time: {formatDuration(currentTime)}</p>
+      <input
+  type="range"
+  min="0"
+  max={duration || 0}
+  value={currentTime}
+  onChange={(e) => {
+    const newTime = Number(e.target.value);
+    if (audioRef.current) {
+      audioRef.current.currentTime = newTime;
+      setCurrentTime(newTime);
+    }
+  }}
+  disabled={!Number.isFinite(duration) || duration <= 0}
+/>
     </div>
     );
 
