@@ -565,6 +565,7 @@ button:disabled {
   margin: 0 auto;
   padding: 40px 20px;
   text-align: center;
+  padding-bottom: 120px;
 }
 
 .book-summary__image {
@@ -573,4 +574,20 @@ button:disabled {
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 20px;
+}
+.book-summary {
+  width: 100%;
+  max-width: 800px;
+  overflow-wrap: break-word;
+}
+
+.summary__content {
+  max-width: 100%;
+  white-space: normal;
+}
+
+@media (max-width: 768px) {
+  .summary__content {
+    padding-bottom: 160px;
+  }
 }

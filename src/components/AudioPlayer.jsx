@@ -46,36 +46,36 @@ function AudioPlayer({ audioLink, imageLink, author, onFinish }) {
     }
   };
   return (
-    <div className="audio__player--wrapper">
-    <div className="audio__book">
-      <img src={imageLink} alt="Book cover" />
-      <p>{author}</p>
+   <div className="audio__player--wrapper">
+  {/* LEFT: Book information */}
+  <div className="audio__book">
+    <img src={imageLink} alt="Book cover" />
+    <div className="book__info">
+      <p className="book__title">{author}</p>
     </div>
-    <audio
-      ref={audioRef}
-      src={audioLink}
-      onPlay={() => setIsPlaying(true)}
-      onPause={() => setIsPlaying(false)}
-      onEnded={() => {
-      setIsPlaying(false);
-      onFinish?.();
-      }}
-      onLoadedMetadata={handleLoadedMetadata}
-      onTimeUpdate={() => setCurrentTime(audioRef.current?.currentTime ?? 0)}
-    />
+  </div>
+    <div className="audio__controls">
+  <button onClick={goBack}>
+    <FaStepBackward />
+  </button>
 
-      <button type="button" onClick={togglePlay} disabled={!audioLink}>
-        {isPlaying ? <FaPause /> : <FaPlay />}
-      </button>
-      <button type="button" onClick={goBack} disabled={!audioLink}>
-        <FaStepBackward />
-      </button>
-      <button type="button" onClick={goForward} disabled={!audioLink}>
-        <FaStepForward />
-      </button>
-      <p>Duration: {duration ? formatDuration(duration) : "Loading..."}</p>
-      <p>Current Time: {formatDuration(currentTime)}</p>
-      <input
+  <button onClick={togglePlay} className="play__button">
+    {isPlaying ? <FaPause /> : <FaPlay />}
+  </button>
+
+  <button onClick={goForward}>
+    <FaStepForward />
+  </button>
+</div>
+
+<div className="audio__progress">
+  <span>{formatDuration(currentTime)}</span>
+
+<input
+  id="audio-progress"
+  name="audioProgress"
+  aria-label="Audio playback progress"
+  className="audio__slider"
   type="range"
   min="0"
   max={duration || 0}
@@ -88,10 +88,32 @@ function AudioPlayer({ audioLink, imageLink, author, onFinish }) {
     }
   }}
   disabled={!Number.isFinite(duration) || duration <= 0}
+  style={{
+    background: `linear-gradient(to right,
+      #2bd97c ${duration > 0 ? (currentTime / duration) * 100 : 0}%,
+      #bac8ce ${duration > 0 ? (currentTime / duration) * 100 : 0}%)`
+  }}
 />
-    </div>
-    );
 
+  <span>{formatDuration(duration)}</span>
+</div>
+
+<audio
+  ref={audioRef}
+  src={audioLink}
+  onPlay={() => setIsPlaying(true)}
+  onPause={() => setIsPlaying(false)}
+  onEnded={() => {
+    setIsPlaying(false);
+    onFinish?.();
+  }}
+  onLoadedMetadata={handleLoadedMetadata}
+  onTimeUpdate={() =>
+    setCurrentTime(audioRef.current?.currentTime ?? 0)
+  }
+/>
+  </div>
+  );
 }
 
 export default AudioPlayer;

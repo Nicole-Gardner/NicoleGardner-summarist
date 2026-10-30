@@ -56,7 +56,7 @@ const handleSaveBook = () => {
 };
 
 return (
-  <div>
+  <div className="book-summary">
     <h1>{book.title}</h1>
     <p>{book.author}</p>
     <img src={book.imageLink} alt={book.title} />
@@ -65,7 +65,7 @@ return (
 </button>
 
     <h2>Book Summary</h2>
-    <p>{book.summary}</p>
+ <p className="summary__content">{book.summary}</p>
 <AudioPlayer
   audioLink={book.audioLink}
   imageLink={book.imageLink}
