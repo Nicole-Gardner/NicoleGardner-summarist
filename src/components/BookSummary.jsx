@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import AudioPlayer from "./AudioPlayer";
+import "./HomeStyle.css";
 
 const BookSummary = () => {
   const { id: bookId } = useParams();
@@ -39,8 +40,9 @@ const BookSummary = () => {
 };
   
 const handleSaveBook = () => {
-  if (!book) return ;
-   const savedBooks = JSON.parse(
+  if (!book) return;
+
+  const savedBooks = JSON.parse(
     localStorage.getItem("savedBooks") || "[]"
   );
 
@@ -50,8 +52,6 @@ const handleSaveBook = () => {
     alert("Book added to your library!");
   } else {
     alert("Book is already in your library!");
-  
-    
   }
 };
 
@@ -59,22 +59,23 @@ return (
   <div className="book-summary">
     <h1>{book.title}</h1>
     <p>{book.author}</p>
-    <img src={book.imageLink} alt={book.title} />
-    <button onClick={handleSaveBook}>
-  Add to Library
-</button>
+    <img
+      className="book-summary__image"
+      src={book.imageLink}
+      alt={book.title}
+    />
+    <button onClick={handleSaveBook}>Add to Library</button>
 
     <h2>Book Summary</h2>
- <p className="summary__content">{book.summary}</p>
-<AudioPlayer
-  audioLink={book.audioLink}
-  imageLink={book.imageLink}
-  author={book.author}
-  onFinish={handleFinishBook}
-/>
+    <p className="summary__content">{book.summary}</p>
+    <AudioPlayer
+      audioLink={book.audioLink}
+      imageLink={book.imageLink}
+      author={book.author}
+      onFinish={handleFinishBook}
+    />
   </div>
 );
-
 };
 
 export default BookSummary;

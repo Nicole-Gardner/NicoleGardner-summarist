@@ -561,11 +561,13 @@ button:disabled {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .book-summary {
+  width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 40px 20px 140px;
   text-align: center;
-  padding-bottom: 120px;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
 }
 
 .book-summary__image {
@@ -575,19 +577,15 @@ button:disabled {
   border-radius: 8px;
   margin-bottom: 20px;
 }
-.book-summary {
-  width: 100%;
-  max-width: 800px;
-  overflow-wrap: break-word;
-}
 
 .summary__content {
+  width: 100%;
   max-width: 100%;
   white-space: normal;
 }
 
 @media (max-width: 768px) {
-  .summary__content {
-    padding-bottom: 160px;
+  .book-summary {
+    padding-bottom: 180px; /* Extra room for stacked mobile audio player */
   }
 }
