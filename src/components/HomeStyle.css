@@ -584,8 +584,52 @@ button:disabled {
   white-space: normal;
 }
 
+.book-summary__layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 48px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 120px;
+}
+
+.book-summary__details {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+.book-summary__image {
+  width: 250px;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.book-summary__details h1 {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.book-summary__details h2 {
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
+.summary__content {
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
 @media (max-width: 768px) {
-  .book-summary {
-    padding-bottom: 180px; /* Extra room for stacked mobile audio player */
+  .book-summary__layout {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .book-summary__details {
+    width: 100%;
   }
 }

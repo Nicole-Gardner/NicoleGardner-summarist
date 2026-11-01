@@ -10,14 +10,21 @@ function SalesPage() {
   };
   return (
     <div>
-      <h2>Get Unlimited Access to many amazing books to read.</h2>
-      <p>Turn ordinary moments into amazing learning opportunities.</p>
-      <p>Key idea in few minutes with many books to read.</p>
-      <p>3 million people growing with summarist everyday.</p>
-      <p>Precise recommendations collections curated by experts.</p>
-      <figure className="pricing-top.png">
-        <img src="assets/pricing-top.png" alt="pricing-top" />
-      </figure>
+      <section className="sales__hero">
+  <div className="sales__hero--content">
+    <h1>Get Unlimited Access to Amazing Books</h1>
+    <p>
+      Turn ordinary moments into amazing
+      learning opportunities.
+    </p>
+  </div>
+
+  <img
+    className="sales__hero--image"
+    src="/assets/pricing-top.png"
+    alt="Subscription illustration"
+  />
+</section>
       <SubscriptionPlans />
 
       <div className="faq__item">

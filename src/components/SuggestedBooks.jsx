@@ -34,14 +34,17 @@ const SuggestedBooks = () => {
       {loading ? (
         <SkeletonState />
       ) : (
-        books.map((item) => (
-          <Link
-            key={item.id}
-            to={`/book-summary/${item.id}`}
-          >
-            <img src={item.imageLink} alt={item.title} />
-          </Link>
-        ))
+        <div className="books__container">
+          {books.map((item) => (
+            <Link key={item.id} to={`/book-summary/${item.id}`}>
+              <img
+                className="book__image"
+                src={item.imageLink}
+                alt={item.title}
+              />
+            </Link>
+          ))}
+        </div>
       )}
     </div>
   );

@@ -57,17 +57,30 @@ const handleSaveBook = () => {
 
 return (
   <div className="book-summary">
-    <h1>{book.title}</h1>
-    <p>{book.author}</p>
-    <img
-      className="book-summary__image"
-      src={book.imageLink}
-      alt={book.title}
-    />
-    <button onClick={handleSaveBook}>Add to Library</button>
+    <div className="book-summary__layout">
 
-    <h2>Book Summary</h2>
-    <p className="summary__content">{book.summary}</p>
+      <div className="book-summary__details">
+        <h1>{book.title}</h1>
+        <p>{book.author}</p>
+
+        <button onClick={handleSaveBook}>
+          Add to Library
+        </button>
+
+        <h2>Book Summary</h2>
+        <p className="summary__content">
+          {book.summary}
+        </p>
+      </div>
+
+      <img
+        className="book-summary__image"
+        src={book.imageLink}
+        alt={book.title}
+      />
+
+    </div>
+
     <AudioPlayer
       audioLink={book.audioLink}
       imageLink={book.imageLink}

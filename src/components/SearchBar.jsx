@@ -7,37 +7,36 @@ function SearchBar() {
   const [books, setBooks] = useState([]);
   const path = window.location.pathname;
 
-  console.log(path);
 
 
- useEffect(() => {
-  const fetchBooks = async () => {
-    if (!searchTerm.trim()) {
-      setBooks([]);
-      return;
-    }
-
-    try {
-      const response = await fetch(
-        `https://us-central1-summaristt.cloudfunctions.net/getBooksByAuthorOrTitle?search=${encodeURIComponent(searchTerm)}`
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to search books");
+  useEffect(() => {
+    const fetchBooks = async () => {
+      if (!searchTerm.trim()) {
+        setBooks([]);
+        return;
       }
 
-      const data = await response.json();
-      setBooks(data);
-    } catch (error) {
-      console.error("Error searching books:", error);
-    }
-  };
+      try {
+        const response = await fetch(
+          `https://us-central1-summaristt.cloudfunctions.net/getBooksByAuthorOrTitle?search=${encodeURIComponent(searchTerm)}`
+        );
 
-  fetchBooks();
-}, [searchTerm]);
+        if (!response.ok) {
+          throw new Error("Failed to search books");
+        }
+        const data = await response.json();
+        console.log("Search results:", data);
+        setBooks(data);
+      } catch (error) {
+        console.error("Error searching books:", error);
+      }
+    };
 
-const filteredBooks = books;
-  if(path === "/" || path === "/choose-plan") return null
+    fetchBooks();
+  }, [searchTerm]);
+
+  const filteredBooks = books;
+  if (path === "/" || path === "/choose-plan") return null
 
 
   return (
@@ -56,6 +55,10 @@ const filteredBooks = books;
               <Link
                 key={book.id}
                 to={`/book-summary/${book.id}`}
+                onClick={() => {
+                  setSearchTerm("");
+                  setBooks([]);
+                }}
               >
                 <p>{book.title}</p>
               </Link>

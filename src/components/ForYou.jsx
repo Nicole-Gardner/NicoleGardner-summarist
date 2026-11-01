@@ -12,11 +12,19 @@ function ForYou() {
             </figure>
           </div>
         </nav>
-      <h1>Welcome to Summarist!</h1>
-      <p>You have successfully logged in.</p>
-      <SuggestedBooks />
-      <SelectedBooks />
-      <RecommendedBooks />
+      <main className="for-you__content">
+  <h1>Welcome to Summarist!</h1>
+  <p>You have successfully logged in.</p>
+
+  <h2>Suggested Books</h2>
+  <SuggestedBooks />
+
+  <h2>Selected Books</h2>
+  <SelectedBooks />
+
+  <h2>Recommended Books</h2>
+  <RecommendedBooks />
+</main>
     </div>
   );
 }

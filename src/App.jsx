@@ -1,4 +1,9 @@
-import { BrowserRouter, Routes, Route } from "react-router";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate
+} from "react-router";
 import HomePage from "./components/HomePage";
 import ForYou from "./components/ForYou";
 import BookSummary from "./components/BookSummary";
@@ -20,20 +25,28 @@ function App() {
       <SearchBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route
+          path="/book-summary"
+          element={<Navigate to="/for-you" replace />}
+        />
+        <Route
+          path="/search"
+          element={<Navigate to="/for-you" replace />}
+        />
         <Route path="/book-summary/:id" element={<BookSummary />} />
         <Route element={<LibraryLayout />}>
-  <Route path="/for-you" element={<ForYou />} />
-  <Route path="/library-page" element={<LibraryPage />} />
-</Route>
+          <Route path="/for-you" element={<ForYou />} />
+          <Route path="/library-page" element={<LibraryPage />} />
+        </Route>
         <Route path="/suggested-books" element={<SuggestedBooks />} />
         <Route path="/selected-books" element={<SelectedBooks />} />
         <Route path="/recommended-books" element={<RecommendedBooks />} />
         <Route path="/sales-page" element={<SalesPage />} />
-        <Route path="/subscription-plans"element={<SubscriptionPlans />}/>
+        <Route path="/subscription-plans" element={<SubscriptionPlans />} />
         <Route path="/success" element={<Success />} />
         <Route path="/cancel" element={<Cancel />} />
-        
-    
+
+
         <Route path="/sidebar" element={<Sidebar />} />
       </Routes>
     </BrowserRouter>
