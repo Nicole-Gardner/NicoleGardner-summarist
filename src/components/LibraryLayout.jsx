@@ -1,15 +1,17 @@
 import React from 'react';
 import { Outlet } from "react-router";
 import Sidebar from './SideBar'; 
+import SearchBar from "./SearchBar";
 const LibraryLayout = () => {
-    return (
-        <div style={layoutStyle}>
-            <Sidebar />
-            <div style={contentStyle}>
-                <Outlet /> {/* This will render the matched child route */}
-            </div>
-        </div>
-    );
+  return (
+    <div style={layoutStyle}>
+      <Sidebar />
+      <div style={contentStyle}>
+        <SearchBar />
+        <Outlet />
+      </div>
+    </div>
+  );
 };
 
 const layoutStyle = {

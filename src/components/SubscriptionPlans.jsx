@@ -35,7 +35,7 @@ const handlePlanClick = async (plan) => {
       <p>$99.99/year</p>
       <p>7-day free trial</p>
 
-      <button onClick={() => handlePlanClick("yearly")}>
+      <button className="btn btn--yearly" onClick={() => handlePlanClick("yearly")}>
         Start Your Free 7-Day Trial
       </button>
 
@@ -47,7 +47,7 @@ const handlePlanClick = async (plan) => {
       <p>$9.99/month</p>
       <p>No trial included</p>
 
-      <button onClick={() => handlePlanClick("monthly")}>
+      <button className="btn btn--monthly" onClick={() => handlePlanClick("monthly")}>
         Get Started
       </button>
     </div>

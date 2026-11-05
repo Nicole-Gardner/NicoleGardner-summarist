@@ -22,7 +22,7 @@ import LibraryLayout from "./components/LibraryLayout";
 function App() {
   return (
     <BrowserRouter>
-      <SearchBar />
+      
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route
@@ -37,7 +37,9 @@ function App() {
         <Route element={<LibraryLayout />}>
           <Route path="/for-you" element={<ForYou />} />
           <Route path="/library-page" element={<LibraryPage />} />
+
         </Route>
+  
         <Route path="/suggested-books" element={<SuggestedBooks />} />
         <Route path="/selected-books" element={<SelectedBooks />} />
         <Route path="/recommended-books" element={<RecommendedBooks />} />

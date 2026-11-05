@@ -25,7 +25,7 @@ function SalesPage() {
     alt="Subscription illustration"
   />
 </section>
-      <SubscriptionPlans />
+   <SubscriptionPlans />
 
       <div className="faq__item">
 

@@ -32,45 +32,48 @@
   align-items: center;
   justify-content: space-between;
   gap: 48px;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 64px 24px;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  border-radius: 0 0 80px 80px;
+  padding: 32px 24px;
+   background-color: #032b41;
+  flex-direction: column;
+  text-align: center;
 }
+
 
 .sales__hero--content {
   flex: 1;
-  text-align: left;
+  text-align: center;
 }
+
 
 .sales__hero--content h1 {
   font-size: 40px;
   line-height: 1.2;
   margin-bottom: 20px;
+  color: white
 }
 
 .sales__hero--content p {
   font-size: 18px;
   line-height: 1.6;
+  color: white;
 }
-
 .sales__hero--image {
-  width: 45%;
-  max-width: 450px;
+  width: 100%;
+  max-width: 320px;
   height: auto;
 }
 
 @media (max-width: 768px) {
   .sales__hero {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .sales__hero--content {
-    text-align: center;
+    border-radius: 0 0 40px 40px;
   }
 
   .sales__hero--image {
     width: 100%;
-    max-width: 350px;
+    max-width: 280px;
   }
 }

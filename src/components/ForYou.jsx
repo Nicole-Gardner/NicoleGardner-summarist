@@ -1,6 +1,7 @@
   import SuggestedBooks from './SuggestedBooks.jsx';
   import SelectedBooks from './SelectedBooks.jsx';
   import RecommendedBooks from './RecommendedBooks.jsx';
+  import SearchBar from "./SearchBar";
 
 function ForYou() {
   return (
