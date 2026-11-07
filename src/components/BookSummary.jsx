@@ -13,6 +13,7 @@ const BookSummary = () => {
         const response = await fetch(
           `https://us-central1-summaristt.cloudfunctions.net/getBook?id=${bookId}`
         );
+      
 
         const jsonData = await response.json();
         console.log(jsonData);

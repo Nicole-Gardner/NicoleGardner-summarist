@@ -19,6 +19,7 @@ import SearchBar from "./components/SearchBar";
 import Sidebar from "./components/SideBar";
 import SignUp from "./components/SignUp";
 import LibraryLayout from "./components/LibraryLayout";
+import SettingsPage from "./components/SettingsPage";
 function App() {
   return (
     <BrowserRouter>
@@ -39,6 +40,7 @@ function App() {
           <Route path="/library-page" element={<LibraryPage />} />
 
         </Route>
+        <Route path="/settings" element={<SettingsPage />} />
   
         <Route path="/suggested-books" element={<SuggestedBooks />} />
         <Route path="/selected-books" element={<SelectedBooks />} />

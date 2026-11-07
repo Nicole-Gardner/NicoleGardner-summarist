@@ -37,3 +37,6 @@
   color: #2bd97c;
   font-weight: bold;
 }
+.no-cursor {
+    cursor: default;
+}

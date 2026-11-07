@@ -10,6 +10,9 @@ const SelectedBooks = () => {
         const response = await fetch(
           "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=selected"
         );
+         if (!response.ok) {
+          throw new Error("Failed to fetch books");
+        }
         const jsonData = await response.json();
         console.log(jsonData);
         setBooks(jsonData);

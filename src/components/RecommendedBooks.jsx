@@ -9,6 +9,9 @@ const RecommendedBooks = () => {
         const response = await fetch(
           "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=recommended"
         );
+        if (!response.ok) {
+          throw new Error("Failed to fetch books");
+        }
         const jsonData = await response.json();
         setBooks(jsonData);
       } catch (error) {

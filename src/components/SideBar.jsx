@@ -26,10 +26,10 @@ const Sidebar = () => {
     My Library
   </NavLink>
 </li>
-                <li><Link to="/highlights" className="li">Highlights</Link></li>
-                <li><Link to="/search" className="li">Search</Link></li>
+                <li><a href="#" className="no-cursor">Highlights</a></li>
+                <li><a href="#" className="no-cursor">Search</a></li>
                 <li><Link to="/settings" className="li">Settings</Link></li>
-                <li><Link to="/help" className="li">Help & Support</Link></li>
+                <li><a href="#" className="no-cursor">Help & Support</a></li>
                 <li><Link to="/login" className="li">Login</Link></li>
 
             </ul>
