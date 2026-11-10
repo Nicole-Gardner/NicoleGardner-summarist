@@ -3,6 +3,8 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
 import "./SettingsPage.css";
 
+
+
 function SettingsPage() {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -36,6 +38,12 @@ function SettingsPage() {
                 <h2>Email</h2>
                 <p>{user.email}</p>
             </div>
+            
+    <div className="settings-page-login">
+      <figure className="settings-login--image">
+        <img src="/assets/login.png" alt="Login" />
+      </figure>
+    </div>
         </div>
   );
 };
