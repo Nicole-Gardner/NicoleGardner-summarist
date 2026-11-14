@@ -38,9 +38,10 @@ function App() {
         <Route element={<LibraryLayout />}>
           <Route path="/for-you" element={<ForYou />} />
           <Route path="/library-page" element={<LibraryPage />} />
+          <Route path="/settings" element={<SettingsPage />} />
 
         </Route>
-        <Route path="/settings" element={<SettingsPage />} />
+        
   
         <Route path="/suggested-books" element={<SuggestedBooks />} />
         <Route path="/selected-books" element={<SelectedBooks />} />
