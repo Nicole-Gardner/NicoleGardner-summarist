@@ -18,14 +18,10 @@
   margin-bottom: 8px;
 }
 
-.sidebar .li {
+.sidebar li a {
   display: block;
   padding: 12px 16px;
-  color: #333;
   text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  border-radius: 6px;
 }
 
 .sidebar .li:hover {
