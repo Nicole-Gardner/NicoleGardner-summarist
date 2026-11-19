@@ -98,11 +98,7 @@
   background-color: #f1f6f4;
 }
 .search__book-image {
-
   width: 48px;
-
   height: 64px;
-
-  object-fit: cover;
-
+  object-fit: contain;
 }

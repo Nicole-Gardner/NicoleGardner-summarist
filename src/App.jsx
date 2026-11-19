@@ -34,11 +34,12 @@ function App() {
           path="/search"
           element={<Navigate to="/for-you" replace />}
         />
-        <Route path="/book-summary/:id" element={<BookSummary />} />
+        
         <Route element={<LibraryLayout />}>
           <Route path="/for-you" element={<ForYou />} />
           <Route path="/library-page" element={<LibraryPage />} />
           <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/book-summary/:id" element={<BookSummary />} />
 
         </Route>
         
