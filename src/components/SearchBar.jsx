@@ -60,6 +60,15 @@ function SearchBar() {
                   setBooks([]);
                 }}
               >
+                <img
+
+                  src={book.imageLink}
+
+                  alt={book.title}
+
+                  className="search__book-image"
+
+                />
                 <p>{book.title}</p>
               </Link>
             ))

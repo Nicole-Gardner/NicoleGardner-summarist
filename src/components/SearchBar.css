@@ -40,11 +40,14 @@
 }
 
 .search__results a {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   padding: 12px 16px;
   text-align: left;
   text-decoration: none;
   color: #1a1a1a;
+
 }
 
 .search__results a:hover {
@@ -93,4 +96,13 @@
 
 .search__results a:hover {
   background-color: #f1f6f4;
+}
+.search__book-image {
+
+  width: 48px;
+
+  height: 64px;
+
+  object-fit: cover;
+
 }

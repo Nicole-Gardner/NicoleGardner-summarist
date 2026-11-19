@@ -20,7 +20,7 @@ import Sidebar from "./components/SideBar";
 import SignUp from "./components/SignUp";
 import LibraryLayout from "./components/LibraryLayout";
 import SettingsPage from "./components/SettingsPage";
-function App() {
+function App() { 
   return (
     <BrowserRouter>
       
