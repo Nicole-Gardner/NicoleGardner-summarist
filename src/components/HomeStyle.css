@@ -633,3 +633,20 @@ button:disabled {
     width: 100%;
   }
 }
+.login-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
+}
+.auth__modal {
+  position: relative;
+}
+
+.auth__modal .login-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
+  z-index: 10;
+}

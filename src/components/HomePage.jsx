@@ -56,6 +56,7 @@ const HomePage = () => {
                 >
                   Login
                 </button>
+
               </div>
               <figure className="landing__image--mask">
                 <img src="assets/landing.png" alt="landing" />
@@ -96,37 +97,31 @@ const HomePage = () => {
             <div className="statistics__wrapper">
               <div className="statistics__content--header">
                 <div
-                  className={`statistics__heading ${
-                    activeHeading === 0 ? "statistics__heading--active" : ""
-                  }`}
+                  className={`statistics__heading ${activeHeading === 0 ? "statistics__heading--active" : ""
+                    }`}
                 >
                   Enhance your knowledge
                 </div>
                 <div
-                  className={`statistics__heading ${
-                    activeHeading === 1 ? "statistics__heading--active" : ""
-                  }`}
+                  className={`statistics__heading ${activeHeading === 1 ? "statistics__heading--active" : ""
+                    }`}
                 >
                   Achieve greater success
                 </div>
-                <div className={`statistics__heading ${
-                  activeHeading === 2 ? "statistics__heading--active" : ""
-                }`}>
+                <div className={`statistics__heading ${activeHeading === 2 ? "statistics__heading--active" : ""
+                  }`}>
                   Improve your health
                 </div>
-                <div className={`statistics__heading ${
-                  activeHeading === 3 ? "statistics__heading--active" : ""
-                }`}>
+                <div className={`statistics__heading ${activeHeading === 3 ? "statistics__heading--active" : ""
+                  }`}>
                   Develop better parenting skills
                 </div>
-                <div className={`statistics__heading ${
-                  activeHeading === 4 ? "statistics__heading--active" : ""
-                }`}>
+                <div className={`statistics__heading ${activeHeading === 4 ? "statistics__heading--active" : ""
+                  }`}>
                   Increase happiness
                 </div>
-                <div className={`statistics__heading ${
-                  activeHeading === 5 ? "statistics__heading--active" : ""
-                }`}>
+                <div className={`statistics__heading ${activeHeading === 5 ? "statistics__heading--active" : ""
+                  }`}>
                   Be the best version of yourself!
                 </div>
               </div>
@@ -372,7 +367,12 @@ const HomePage = () => {
       {isModalOpen && (
         <div className="auth__overlay">
           <div className="auth__modal">
-            <button onClick={() => setIsModalOpen(false)}>×</button>
+            <button
+              className="login-close"
+              onClick={() => setIsModalOpen(false)}
+            >
+              ×
+            </button>
             <Login />
           </div>
         </div>

@@ -125,3 +125,12 @@
   padding: 24px;
   box-sizing: border-box;
 }
+.modal-content > button:first-child {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: auto;
+  padding: 4px 8px;
+  cursor: pointer;
+  z-index: 10;
+}
