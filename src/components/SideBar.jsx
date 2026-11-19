@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 import './SideBar.css';
 const Sidebar = () => {
     const [user, setUser] = useState(null);
+const [isOpen, setIsOpen] = useState(false);
 const navigate = useNavigate();
 
 useEffect(() => {
@@ -18,7 +19,11 @@ const handleLogout = async () => {
   navigate("/");
 };
     return (
-        <div className="sidebar">
+        <>
+        <button className="sidebar__toggle" onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? "✕" : "☰"}
+        </button>
+        <div className={isOpen ? "sidebar sidebar--open" : "sidebar"}>
             <h2>Navigation</h2>
             <ul>
                 <li>
@@ -59,6 +64,7 @@ const handleLogout = async () => {
 
             </ul>
         </div>
+        </>
     );
 };
 export default Sidebar;

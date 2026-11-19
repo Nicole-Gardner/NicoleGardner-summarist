@@ -54,3 +54,30 @@
   background: #e8f8ee;
   color: #2bd97c;
 }
+.sidebar__toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -200px;
+    z-index: 2000;
+    transition: left 300ms;
+  }
+
+  .sidebar--open {
+    left: 0;
+  }
+
+  .sidebar__toggle {
+    display: block;
+    position: fixed;
+    top: 52px;
+    right: 16px;
+    z-index: 2001;
+    font-size: 28px;
+    color: #032b41;
+  }
+}

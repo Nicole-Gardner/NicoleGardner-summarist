@@ -649,6 +649,7 @@ button:disabled {
   right: 12px;
   cursor: pointer;
   z-index: 10;
+  font-size: 24px;
 }
 @media (max-width: 600px) {
   .auth__modal {

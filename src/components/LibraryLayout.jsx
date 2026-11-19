@@ -21,6 +21,7 @@ const layoutStyle = {
 
 const contentStyle = {
     flex: 1,
+    minWidth: 0,
     padding: '20px',
 };
 

@@ -9,7 +9,7 @@ function ForYou() {
         <nav className="nav">
           <div className="nav__wrapper">
             <figure className="nav__img--mask">
-              <img className="logo" src="assets/logo.png" alt="logo" />
+              <img className="nav__img" src="assets/logo.png" alt="logo"></img>
             </figure>
           </div>
         </nav>
