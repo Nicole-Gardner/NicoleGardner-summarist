@@ -650,3 +650,15 @@ button:disabled {
   cursor: pointer;
   z-index: 10;
 }
+@media (max-width: 600px) {
+  .auth__modal {
+    width: 90%;
+    max-width: 400px;
+    box-sizing: border-box;
+  }
+
+  .login-container {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
