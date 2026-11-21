@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import "./SearchBar.css";
 
 function SearchBar() {
+  const { pathname: path } = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
   const [books, setBooks] = useState([]);
-  const path = window.location.pathname;
+  const [loading, setLoading] = useState(false);
 
 
 
@@ -15,6 +16,7 @@ function SearchBar() {
         setBooks([]);
         return;
       }
+      setLoading(true);
 
       try {
         const response = await fetch(
@@ -29,56 +31,60 @@ function SearchBar() {
         setBooks(data);
       } catch (error) {
         console.error("Error searching books:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchBooks();
   }, [searchTerm]);
 
-  const filteredBooks = books;
-  if (path === "/" || path === "/choose-plan") return null
+const filteredBooks = books;
+if (path === "/" || path === "/choose-plan") return null
 
 
-  return (
-    <div className="search">
-      <input
-        type="text"
-        placeholder="Search for books"
-        value={searchTerm}
-        onChange={(event) => setSearchTerm(event.target.value)}
-      />
+return (
+  <div className="search">
+    <input
+      type="text"
+      placeholder="Search for books"
+      value={searchTerm}
+      onChange={(event) => setSearchTerm(event.target.value)}
+    />
 
-      {searchTerm.trim() !== "" && (
-        <div className="search__results">
-          {filteredBooks.length > 0 ? (
-            filteredBooks.map((book) => (
-              <Link
-                key={book.id}
-                to={`/book-summary/${book.id}`}
-                onClick={() => {
-                  setSearchTerm("");
-                  setBooks([]);
-                }}
-              >
-                <img
+    {searchTerm.trim() !== "" && (
+      <div className="search__results">
+        {loading ? (
+  <p>Loading...</p>
+) : filteredBooks.length > 0 ? (
+          filteredBooks.map((book) => (
+            <Link
+              key={book.id}
+              to={`/book-summary/${book.id}`}
+              onClick={() => {
+                setSearchTerm("");
+                setBooks([]);
+              }}
+            >
+              <img
 
-                  src={book.imageLink}
+                src={book.imageLink}
 
-                  alt={book.title}
+                alt={book.title}
 
-                  className="search__book-image"
+                className="search__book-image"
 
-                />
-                <p>{book.title}</p>
-              </Link>
-            ))
-          ) : (
-            <p>No matching books found.</p>
-          )}
-        </div>
-      )}
-    </div>
-  );
+              />
+              <p>{book.title}</p>
+            </Link>
+          ))
+        ) : (
+          <p>No matching books found.</p>
+        )}
+      </div>
+    )}
+  </div>
+);
 }
 
 export default SearchBar;
