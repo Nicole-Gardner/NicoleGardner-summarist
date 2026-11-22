@@ -3,22 +3,23 @@ import { Link, NavLink } from "react-router";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "./firebase";
-import { useNavigate } from "react-router";
+
 import Login from "./Login";
 import './SideBar.css';
 const Sidebar = () => {
   const [user, setUser] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    return onAuthStateChanged(auth, setUser);
-  }, []);
 
+ useEffect(() => {
+  return onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+    if (currentUser) setShowLogin(false);
+  });
+}, []);
   const handleLogout = async () => {
     await signOut(auth);
-    navigate("/");
   };
   return (
     <>
