@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import './Signup.css'; 
+import './SignUp.css'; 
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./firebase";
 
-const Signup = () => {
+const SignUp = () => {
     // State variables for form inputs
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -67,4 +67,4 @@ const Signup = () => {
     );
 };
 
-export default Signup;
+export default SignUp;

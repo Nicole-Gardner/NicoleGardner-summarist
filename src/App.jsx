@@ -37,7 +37,7 @@ function App() {
         
         <Route element={<LibraryLayout />}>
           <Route path="/for-you" element={<ForYou />} />
-          <Route path="/library-page" element={<LibraryPage />} />
+          <Route path="/library" element={<LibraryPage />} />
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/book-summary/:id" element={<BookSummary />} />
 
