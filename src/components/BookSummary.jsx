@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import AudioPlayer from "./AudioPlayer";
+import SkeletonState from "./SkeletonState";
 import "./HomeStyle.css"; import { onAuthStateChanged } from "firebase/auth";
 
 import { doc, getDoc } from "firebase/firestore";
@@ -78,13 +79,10 @@ const BookSummary = () => {
     return () => unsubscribe();
 
   }, []);
-  if (!book || checkingSubscription) {
-
-if (loading) {
+if (!book || checkingSubscription) {
   return <SkeletonState />;
 }
 
-  }
   const hasSubscription =
 
     subscription?.subscriptionStatus === "active" &&
@@ -192,5 +190,7 @@ if (loading) {
     </div>
   );
 };
+
+
 
 export default BookSummary;

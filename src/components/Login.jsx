@@ -48,6 +48,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <h2>Login</h2>
+      {error && <p className="login__error">{error}</p>}
 
       <input
         type="email"
