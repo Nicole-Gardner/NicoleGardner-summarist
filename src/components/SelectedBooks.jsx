@@ -1,8 +1,10 @@
 import { Link } from "react-router";
 import React, { useEffect, useState } from 'react';
+import SkeletonState from "./SkeletonState";
 
 const SelectedBooks = () => {
   const [books, setBooks] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,11 +21,16 @@ const SelectedBooks = () => {
       } catch (error) {
         console.error('Error fetching data:', error);
       }
+      finally {
+  setLoading(false);
+}
     };
 
     fetchData();
   }, []);
-
+if (loading) {
+  return <SkeletonState />;
+}
   return (
     <div className="books__container">
       {books.map((item) => (

@@ -80,7 +80,9 @@ const BookSummary = () => {
   }, []);
   if (!book || checkingSubscription) {
 
-    return <p>Loading...</p>;
+if (loading) {
+  return <SkeletonState />;
+}
 
   }
   const hasSubscription =

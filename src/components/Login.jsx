@@ -15,18 +15,25 @@ const Login = () => {
   const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
 
-  const handleLogin = async () => {
+ const handleLogin = async () => {
+  if (!email || !password) {
+    setError("Please enter your email and password.");
+    return;
+  }
   try {
     await signInWithEmailAndPassword(auth, email, password);
-    console.log("User logged in successfully");
     setError("");
     navigate("/for-you");
   } catch (error) {
-    setError(error.message);
-  
+    if (error.code === "auth/invalid-email") {
+      setError("Please enter a valid email address.");
+    } else if (error.code === "auth/invalid-credential") {
+      setError("Wrong email or password. Please try again.");
+    } else {
+      setError(error.message);
+    }
   }
 };
-  
   const handleGuestLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, "guest@gmail.com", "guest234");
@@ -82,7 +89,6 @@ const Login = () => {
 )}
 
 {showForgotPassword && <ForgotPassword />}
-      {error && <p>{error}</p>}
     </div>
   );
 };

@@ -134,3 +134,7 @@
   cursor: pointer;
   z-index: 10;
 }
+.login__error {
+  color: #f56565;
+  margin-bottom: 12px;
+}
