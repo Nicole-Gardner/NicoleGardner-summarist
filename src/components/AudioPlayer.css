@@ -108,4 +108,31 @@
     flex-shrink: 0;
   }
 }
+.audio__player--wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 200px;
+  right: 0;
+  background-color: #032b41;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 20px;
+  z-index: 100;
+}
+
+.audio__book {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.audio__book img {
+  width: 50px;
+  height: 65px;
+  object-fit: cover;
+}
+
   

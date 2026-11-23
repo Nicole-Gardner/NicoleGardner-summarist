@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams, Link } from "react-router";
 import AudioPlayer from "./AudioPlayer";
 import SkeletonState from "./SkeletonState";
 import "./HomeStyle.css"; import { onAuthStateChanged } from "firebase/auth";
@@ -7,8 +7,6 @@ import "./HomeStyle.css"; import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 
 import { auth, db } from "./firebase";
-
-import { Link } from "react-router";
 
 
 const BookSummary = () => {
@@ -79,9 +77,9 @@ const BookSummary = () => {
     return () => unsubscribe();
 
   }, []);
-if (!book || checkingSubscription) {
-  return <SkeletonState />;
-}
+  if (!book || checkingSubscription) {
+    return <SkeletonState />;
+  }
 
   const hasSubscription =
 
@@ -133,6 +131,14 @@ if (!book || checkingSubscription) {
         <div className="book-summary__details">
           <h1>{book.title}</h1>
           <p>{book.author}</p>
+          <div className="book__actions">
+            <Link to={`/player/${book.id}?mode=read`}>
+              Read
+            </Link>
+            <Link to={`/player/${book.id}?mode=listen`}>
+              Listen
+            </Link>
+          </div>
 
           <button onClick={handleSaveBook}>
             Add to Library

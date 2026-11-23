@@ -20,6 +20,7 @@ import Sidebar from "./components/SideBar";
 import SignUp from "./components/SignUp";
 import LibraryLayout from "./components/LibraryLayout";
 import SettingsPage from "./components/SettingsPage";
+import PlayerPage from "./components/PlayerPage";
 function App() { 
   return (
     <BrowserRouter>
@@ -40,6 +41,7 @@ function App() {
           <Route path="/library" element={<LibraryPage />} />
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/book-summary/:id" element={<BookSummary />} />
+          <Route path="/player/:id" element={<PlayerPage />} />
 
         </Route>
         

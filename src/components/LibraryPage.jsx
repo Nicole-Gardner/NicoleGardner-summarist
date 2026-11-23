@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { Link } from "react-router";
 const LibraryPage = () => {
   const [savedBooks] = useState(() =>
     JSON.parse(localStorage.getItem("savedBooks") || "[]")
@@ -16,10 +16,14 @@ const LibraryPage = () => {
       {savedBooks.length > 0 ? (
         <div className="library__books">
           {savedBooks.map((book) => (
-            <div className="library__book" key={book.id}>
+            <Link
+              to={`/book-summary/${book.id}`}
+              key={book.id}
+              className="library__book"
+            >
               <img src={book.imageLink} alt={book.title} />
               <h3>{book.title}</h3>
-            </div>
+            </Link>
           ))}
         </div>
       ) : (
@@ -30,10 +34,14 @@ const LibraryPage = () => {
       {finishedBooks.length > 0 ? (
         <div className="library__books">
           {finishedBooks.map((book) => (
-            <div className="library__book" key={book.id}>
+            <Link
+              to={`/book-summary/${book.id}`}
+              key={book.id}
+              className="library__book"
+            >
               <h3>{book.title}</h3>
               <img src={book.imageLink} alt={book.title} width="150" />
-            </div>
+            </Link>
           ))}
         </div>
       ) : (
