@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth, db } from "./firebase";
 import { doc, getDoc } from "firebase/firestore";
+import { useNavigate } from "react-router";
 import "./SettingsPage.css";
 
 function SettingsPage() {
   const [user, setUser] = useState(null);
   const [subscription, setSubscription] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
@@ -52,7 +54,10 @@ function SettingsPage() {
           <div className="settings-login--text">
             Log in to your account to see your details.
           </div>
-          <button className="settings-login--btn">
+          <button
+            className="settings-login--btn"
+            onClick={() => navigate("/")}
+          >
             Login
           </button>
         </div>

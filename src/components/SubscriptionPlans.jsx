@@ -5,7 +5,7 @@ const SubscriptionPlans = () => {
 const handlePlanClick = async (plan) => {
   try {
     const response = await fetch(
-      "http://localhost:4242/create-checkout-session",
+     "/api/create-checkout-session",
       {
         method: "POST",
         headers: {
