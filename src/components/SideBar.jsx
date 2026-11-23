@@ -3,6 +3,8 @@ import { Link, NavLink } from "react-router";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "./firebase";
+import { FaHome, FaBookOpen, FaCog, FaHighlighter, FaSearch,
+  FaQuestionCircle, FaSignOutAlt } from "react-icons/fa";
 
 import Login from "./Login";
 import './SideBar.css';
@@ -12,12 +14,12 @@ const Sidebar = () => {
   const [showLogin, setShowLogin] = useState(false);
 
 
- useEffect(() => {
-  return onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-    if (currentUser) setShowLogin(false);
-  });
-}, []);
+  useEffect(() => {
+    return onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      if (currentUser) setShowLogin(false);
+    });
+  }, []);
   const handleLogout = async () => {
     await signOut(auth);
   };
@@ -27,7 +29,11 @@ const Sidebar = () => {
         {isOpen ? "✕" : "☰"}
       </button>
       <div className={isOpen ? "sidebar sidebar--open" : "sidebar"}>
-        <h2>Navigation</h2>
+        <img
+          src="/assets/logo.png"
+          alt="Summarist"
+          className="sidebar__logo"
+        />
         <ul>
           <li>
             <NavLink
@@ -36,9 +42,10 @@ const Sidebar = () => {
                 isActive ? "li active" : "li"
               }
             >
-              For You
+              <FaHome /> For You
             </NavLink>
           </li>
+
           <li>
             <NavLink
               to="/library"
@@ -46,22 +53,34 @@ const Sidebar = () => {
                 isActive ? "li active" : "li"
               }
             >
-              My Library
+              <FaBookOpen /> My Library
             </NavLink>
           </li>
-          <li><span className="no-cursor">Highlights</span></li>
-          <li>
-            <span className="no-cursor">Search</span>
-          </li>
+
+          <li><span className="no-cursor">
+            <FaHighlighter /> Highlights</span></li>
+          <li><span className="no-cursor">
+            <FaSearch /> Search</span></li>
+        </ul>
+
+        <ul className="sidebar__bottom">
           <li>
             <NavLink to="/settings" className="li">
-              Settings
+              <FaCog /> Settings
             </NavLink>
           </li>
-          <li><span className="no-cursor">Help & Support</span></li>
+
+          <li>
+            <span className="no-cursor">
+              <FaQuestionCircle /> Help & Support</span>
+          </li>
+
           <li>
             {user ? (
-              <button className="sidebar__auth" onClick={handleLogout}>
+              <button
+                className="sidebar__auth"
+                onClick={handleLogout}
+              >  <FaSignOutAlt />
                 Logout
               </button>
             ) : (
@@ -73,24 +92,23 @@ const Sidebar = () => {
               </button>
             )}
           </li>
-
         </ul>
+      </div>
+      {showLogin && (
+        <div className="auth__overlay">
+          <div className="auth__modal">
+            <button
+              className="login-close"
+              onClick={() => setShowLogin(false)}
+            >
+              ×
+            </button>
+            <Login />
           </div>
-  {showLogin && (
-  <div className="auth__overlay">
-    <div className="auth__modal">
-      <button
-        className="login-close"
-        onClick={() => setShowLogin(false)}
-      >
-        ×
-      </button>
-      <Login />
-    </div>
-  </div>
-)}
-</>
-);
+        </div>
+      )}
+    </>
+  );
 };
 
 export default Sidebar;

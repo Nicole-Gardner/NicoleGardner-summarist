@@ -15,8 +15,8 @@ const LibraryLayout = () => {
 };
 
 const layoutStyle = {
-    display: 'flex',
-    height: '100vh',
+  display: "flex",
+  minHeight: "100vh",
 };
 
 const contentStyle = {
