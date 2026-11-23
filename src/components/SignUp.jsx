@@ -8,10 +8,11 @@ const SignUp = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState("");
 
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+  e.preventDefault(); setError("")
 
   try {
     await createUserWithEmailAndPassword(
@@ -22,19 +23,26 @@ const SignUp = () => {
 
     console.log("Account created successfully!");
     alert("Your account has been created!");
-  } catch (error) {
-    console.error("Signup error:", error.message);
-    alert(error.message);
+  }catch (error) {
+  if (error.code === "auth/invalid-email") {
+    setError("Please enter a valid email address.");
+  } else if (error.code === "auth/weak-password") {
+    setError("Password must be at least 6 characters.");
+  } else if (error.code === "auth/email-already-in-use") {
+    setError("This email is already registered.");
+  } else {
+    setError("Something went wrong. Please try again.");
   }
+}
 };
     return (
         <div className="signup-container">
             <h2>Sign Up</h2>
+            {error && <p className="signup__error">{error}</p>}
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="username">Username:</label>
                     <input 
-                        type="text" 
                         id="username" 
                         value={username} 
                         onChange={(e) => setUsername(e.target.value)} 
@@ -63,6 +71,7 @@ const SignUp = () => {
                 </div>
                 <button type="submit">Sign Up</button>
             </form>
+          
         </div>
     );
 };
