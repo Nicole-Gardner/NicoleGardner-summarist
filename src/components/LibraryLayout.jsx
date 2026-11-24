@@ -6,9 +6,9 @@ import { useState } from "react";
 const LibraryLayout = () => {
   const [fontSize, setFontSize] = useState(16);
   return (
-    <div style={layoutStyle}>
+    <div className="library-layout__content" style={contentStyle}>
      <Sidebar fontSize={fontSize} setFontSize={setFontSize} />
-      <div style={contentStyle}>
+      <div>
         <SearchBar />
        <Outlet context={{ fontSize }} />
       </div>

@@ -5,14 +5,7 @@
 
 function ForYou() {
   return (
-    <div>
-        <nav className="nav">
-          <div className="nav__wrapper">
-            <figure className="nav__img--mask">
-              <img className="nav__img" src="assets/logo.png" alt="logo"></img>
-            </figure>
-          </div>
-        </nav>
+    <div className="for-you">
       <main className="for-you__content">
   <h1>Welcome to Summarist!</h1>
   <p>You have successfully logged in.</p>

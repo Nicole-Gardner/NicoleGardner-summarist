@@ -2,7 +2,7 @@
   width: 200px;
   min-width: 200px;
   height: 100vh;
-  position: sticky;
+  position: fixed;
   top: 0;
   overflow-y: auto;
   display: flex;
@@ -72,6 +72,7 @@
     z-index: 2000;
     transition: left 300ms;
   }
+ 
 
   .sidebar--open {
     left: 0;
@@ -161,3 +162,7 @@
 .sidebar__fonts button.active {
   border-bottom: 2px solid #2bd97c;
 }
+ @media (min-width: 769px) {
+  .library-layout__content {
+    margin-left: 200px;
+  }}
