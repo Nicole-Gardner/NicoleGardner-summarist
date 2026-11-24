@@ -3,3 +3,19 @@
   padding: 24px;
   padding-bottom: 120px;
 }
+.player__content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px 120px;
+  text-align: left;
+}
+
+.player__content h1 {
+  font-size: 28px;
+  margin-bottom: 24px;
+}
+
+.player__content p {
+  line-height: 1.7;
+  white-space: pre-line;
+}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams, useOutletContext } from "react-router";
 import AudioPlayer from "./AudioPlayer";
 import "./PlayerPage.css";
 
@@ -7,6 +7,7 @@ const PlayerPage = () => {
     const { id } = useParams();
     const [book, setBook] = useState(null);
     const [error, setError] = useState("");
+    const { fontSize } = useOutletContext();
 
     useEffect(() => {
         const fetchBook = async () => {
@@ -36,14 +37,18 @@ const PlayerPage = () => {
     return (
         <div className="player__content">
             <h1>{book.title}</h1>
-            <p style={{ whiteSpace: "pre-line" }}>
-                {book.summary}
+           <p style={{
+  whiteSpace: "pre-line",
+  fontSize: `${fontSize}px`
+}}>
+  {book.summary}
+</p>
                 <AudioPlayer
                     audioLink={book.audioLink}
                     imageLink={book.imageLink}
                     author={book.author}
                 />
-            </p>
+    
         </div>
     );
 };

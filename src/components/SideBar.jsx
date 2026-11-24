@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useLocation } from "react-router";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "./firebase";
@@ -8,10 +8,11 @@ import { FaHome, FaBookOpen, FaCog, FaHighlighter, FaSearch,
 
 import Login from "./Login";
 import './SideBar.css';
-const Sidebar = () => {
+const Sidebar = ({ fontSize, setFontSize }) => {
   const [user, setUser] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const location = useLocation();
 
 
   useEffect(() => {
@@ -62,6 +63,21 @@ const Sidebar = () => {
           <li><span className="no-cursor">
             <FaSearch /> Search</span></li>
         </ul>
+        {location.pathname.startsWith("/player/") && (
+  <div className="sidebar__fonts">
+    {[14, 16, 20, 24].map((size) => (
+      <button
+        key={size}
+        onClick={() => setFontSize(size)}
+        className={fontSize === size ? "active" : ""}
+        style={{ fontSize: `${size}px` }}
+        aria-pressed={fontSize === size}
+      >
+        Aa
+      </button>
+    ))}
+  </div>
+)}
 
         <ul className="sidebar__bottom">
           <li>

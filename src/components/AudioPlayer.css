@@ -110,9 +110,10 @@
 }
 .audio__player--wrapper {
   position: fixed;
-  bottom: 0;
-  left: 200px;
+   left: 0;
   right: 0;
+  width: 100%;
+  box-sizing: border-box;
   background-color: #032b41;
   color: white;
   display: flex;

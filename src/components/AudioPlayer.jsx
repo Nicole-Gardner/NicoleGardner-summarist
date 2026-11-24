@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import "./AudioPlayer.css";
+import { MdReplay10, MdForward10 } from "react-icons/md";
 import {
   FaPlay,
   FaPause,
@@ -56,7 +57,7 @@ function AudioPlayer({ audioLink, imageLink, author, onFinish }) {
   </div>
     <div className="audio__controls">
   <button onClick={goBack}>
-    <FaStepBackward />
+   <MdReplay10 />
   </button>
 
   <button onClick={togglePlay} className="play__button">
@@ -64,7 +65,7 @@ function AudioPlayer({ audioLink, imageLink, author, onFinish }) {
   </button>
 
   <button onClick={goForward}>
-    <FaStepForward />
+   <MdForward10 />
   </button>
 </div>
 
