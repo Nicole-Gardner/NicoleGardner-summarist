@@ -187,7 +187,8 @@ code {
 }
 
 .books__container > a {
-  flex-shrink: 0;
+  position: relative;
+  padding-top: 32px;
 }
 .for-you__content {
   width: 100%;
@@ -245,12 +246,13 @@ code {
 
 .book__premium--badge {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 0;
+  right: 0;
   background-color: #032b41;
   color: white;
   font-size: 10px;
-  padding: 4px 8px;
-  border-radius: 4px;
   font-weight: 600;
+  padding: 3px 8px;
+  line-height: 12px;
+  border-radius: 20px;
 }

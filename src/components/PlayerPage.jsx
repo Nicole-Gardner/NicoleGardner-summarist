@@ -15,7 +15,7 @@ const PlayerPage = () => {
     const [subscription, setSubscription] = useState(null);
 const [checkingSubscription, setCheckingSubscription] = useState(true);
 
-    useEffect(() => {useEffect(() => {
+useEffect(() => {
   const unsubscribe = onAuthStateChanged(auth, async (user) => {
     setCheckingSubscription(true);
     setSubscription(null);
@@ -37,7 +37,9 @@ const [checkingSubscription, setCheckingSubscription] = useState(true);
 
   return () => unsubscribe();
 }, []);
-        const fetchBook = async () => {
+
+useEffect(() => {
+  const fetchBook = async () => {
             try {
                 const response = await fetch(
                     `https://us-central1-summaristt.cloudfunctions.net/getBook?id=${id}`
