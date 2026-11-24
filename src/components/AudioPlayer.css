@@ -110,9 +110,9 @@
 }
 .audio__player--wrapper {
   position: fixed;
-   left: 0;
+  left: 200px;
   right: 0;
-  width: 100%;
+  width: auto;
   box-sizing: border-box;
   background-color: #032b41;
   color: white;
@@ -135,5 +135,10 @@
   height: 65px;
   object-fit: cover;
 }
-
+@media (max-width: 768px) {
+  .audio__player--wrapper {
+    left: 0;
+    width: 100%;
+  }
+}
   
