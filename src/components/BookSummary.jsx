@@ -55,7 +55,7 @@ const BookSummary = () => {
           if (snapshot.exists()) {
 
             setSubscription(snapshot.data());
-
+            console.log("Subscription data:", snapshot.data());
           }
 
         }
@@ -132,12 +132,21 @@ const BookSummary = () => {
           <h1>{book.title}</h1>
           <p>{book.author}</p>
           <div className="book__actions">
-            <Link to={`/player/${book.id}?mode=read`}>
-              Read
-            </Link>
-            <Link to={`/player/${book.id}?mode=listen`}>
-              Listen
-            </Link>
+            {canAccessBook ? (
+              <>
+                <Link to={`/player/${book.id}?mode=read`}>
+                  Read
+                </Link>
+
+                <Link to={`/player/${book.id}?mode=listen`}>
+                  Listen
+                </Link>
+              </>
+            ) : (
+              <Link to="/sales-page">
+                Upgrade to Premium
+              </Link>
+            )}
           </div>
 
           <button onClick={handleSaveBook}>
