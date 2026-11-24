@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router";
 const SubscriptionPlans = () => {
+  const [selectedPlan, setSelectedPlan] = useState("yearly");
 
 const handlePlanClick = async (plan) => {
   try {
     const response = await fetch(
-     "/api/create-checkout-session",
+      "http://localhost:4242/create-checkout-session",
       {
         method: "POST",
         headers: {
@@ -28,32 +29,53 @@ const handlePlanClick = async (plan) => {
   }
 };
 
-  return (
+ return (
   <div className="subscription__plans">
-    <div className="plan plan--yearly">
-      <h2>Premium Plus Yearly</h2>
-      <p>$99.99/year</p>
-      <p>7-day free trial</p>
+    <h2>Choose the plan that fits you</h2>
 
-      <button className="btn btn--yearly" onClick={() => handlePlanClick("yearly")}>
-        Start Your Free 7-Day Trial
-      </button>
+    <label className={`plan ${selectedPlan === "yearly" ? "plan--active" : ""}`}>
+      <input
+        type="radio"
+        name="plan"
+        checked={selectedPlan === "yearly"}
+        onChange={() => setSelectedPlan("yearly")}
+      />
 
-      <p>Cancel before your trial ends to avoid being charged.</p>
-    </div>
+      <div>
+        <h3>Premium Plus Yearly</h3>
+        <h2>$99.99/year</h2>
+        <p>7-day free trial included</p>
+      </div>
+    </label>
 
-    <div className="plan plan--monthly">
-      <h2>Premium Monthly</h2>
-      <p>$9.99/month</p>
-      <p>No trial included</p>
+    <span className="plan__divider">or</span>
 
-      <button className="btn btn--monthly" onClick={() => handlePlanClick("monthly")}>
-        Get Started
-      </button>
-    </div>
+    <label className={`plan ${selectedPlan === "monthly" ? "plan--active" : ""}`}>
+      <input
+        type="radio"
+        name="plan"
+        checked={selectedPlan === "monthly"}
+        onChange={() => setSelectedPlan("monthly")}
+      />
+
+      <div>
+        <h3>Premium Monthly</h3>
+        <h2>$9.99/month</h2>
+        <p>No trial included</p>
+      </div>
+    </label>
+
+    <button onClick={() => handlePlanClick(selectedPlan)}>
+      {selectedPlan === "yearly"
+        ? "Start your free 7-day trial"
+        : "Get started"}
+    </button>
+
+    {selectedPlan === "yearly" && (
+      <p>Cancel your trial at any time before it ends, and you won't be charged.</p>
+    )}
   </div>
-)
+);
 };
 
 export default SubscriptionPlans;
-

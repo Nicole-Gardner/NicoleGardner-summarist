@@ -5,15 +5,16 @@ import SearchBar from "./SearchBar";
 import { useState } from "react";
 const LibraryLayout = () => {
   const [fontSize, setFontSize] = useState(16);
-  return (
+ return (
+  <div style={layoutStyle}>
+    <Sidebar fontSize={fontSize} setFontSize={setFontSize} />
+
     <div className="library-layout__content" style={contentStyle}>
-     <Sidebar fontSize={fontSize} setFontSize={setFontSize} />
-      <div>
-        <SearchBar />
-       <Outlet context={{ fontSize }} />
-      </div>
+      <SearchBar />
+      <Outlet context={{ fontSize }} />
     </div>
-  );
+  </div>
+);
 };
 
 const layoutStyle = {

@@ -27,6 +27,10 @@
   margin-top: 20px;
   line-height: 1.6;
 }
+.faq__item {
+  padding-left: 24px;
+  padding-right: 24px;
+}
 .sales__hero {
   display: flex;
   align-items: center;

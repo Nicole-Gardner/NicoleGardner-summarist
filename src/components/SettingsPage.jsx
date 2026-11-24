@@ -73,6 +73,12 @@ function SettingsPage() {
           {/* Click this button once to log out of guest@gmail.com and see the Login illustration view! */}
           <button
             className="settings-login--btn"
+            onClick={() => navigate("/sales-page")}
+          >
+            Upgrade to Premium
+          </button>
+          <button
+            className="settings-login--btn"
             style={{ marginTop: "16px" }}
             onClick={() => signOut(auth)}
           >

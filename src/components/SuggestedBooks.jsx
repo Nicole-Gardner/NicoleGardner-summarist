@@ -37,6 +37,11 @@ const SuggestedBooks = () => {
         <div className="books__container">
           {books.map((item) => (
             <Link key={item.id} to={`/book-summary/${item.id}`}>
+              {item.subscriptionRequired && (
+                <span className="book__premium--badge">
+                  Premium
+                </span>
+              )}
               <img
                 className="book__image"
                 src={item.imageLink}
