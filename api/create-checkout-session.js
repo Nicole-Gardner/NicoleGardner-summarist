@@ -1,20 +1,29 @@
-
+import { getAuth } from "firebase-admin/auth";
+import "./firebase-admin.js";
 
 import Stripe from "stripe";
 
 export async function POST(request) {
   try {
+    const token = request.headers.get("Authorization")?.split("Bearer ")[1];
+
+    if (!token) {
+      return Response.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const decodedToken = await getAuth().verifyIdToken(token);
+    const uid = decodedToken.uid;
     const { plan } = await request.json();
 
     const prices = {
-      monthly:"price_1UT6BtC1DJgW5tQjS5KW1xBl",
+      monthly: "price_1UT6BtC1DJgW5tQjS5KW1xBl",
       yearly: "price_1UT6DwC1DJgW5tQjUnh3zZUH",
     };
 
     if (!Object.hasOwn(prices, plan) || !prices[plan]) {
       return Response.json(
         { error: "Invalid subscription plan" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -23,6 +32,11 @@ export async function POST(request) {
 
     const session = await stripe.checkout.sessions.create({
       mode: "subscription",
+      client_reference_id: uid,
+      metadata: {
+        uid: uid,
+        plan: plan,
+      },
       line_items: [
         {
           price: prices[plan],
@@ -42,7 +56,7 @@ export async function POST(request) {
 
     return Response.json(
       { error: "Unable to start checkout" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
